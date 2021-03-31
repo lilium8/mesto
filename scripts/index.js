@@ -1,7 +1,7 @@
 const popup = document.querySelector('.popup');
-const OpenPopupButton = document.getElementById('open_popup');
-const ClosePopupButton = document.getElementById('close_popup');
-let SaveButton = document.getElementById ('save-button');
+const openPopupButton = document.getElementById('open_popup');
+const closePopupButton = document.getElementById('close_popup');
+let saveButton = document.getElementById ('save-button');
 let formElement = document.getElementById('popup_form');
 let nameInput = document.getElementById('name_input');
 let jobInput = document.getElementById('job_input');
@@ -14,19 +14,12 @@ function openPopup (){
     jobInput.value = profileJob.textContent; 
 }
 
-OpenPopupButton.addEventListener ('click', function() {
-    openPopup();
-});
-
+openPopupButton.addEventListener ('click', openPopup);
 function closePopup (){
     popup.classList.remove('popup_visible');
-    console.log(popup)
 }
 
-ClosePopupButton.addEventListener ('click', function() {
-    closePopup();
-});
-
+closePopupButton.addEventListener ('click', closePopup);
 
 function formSubmitHandler(evt) {
     evt.preventDefault();

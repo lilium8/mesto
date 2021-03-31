@@ -1,19 +1,27 @@
 .popup__close-button {
+    background-image: url(../../../images/Close_Icon.svg);
     color: #fff;
-    font-size: 75px;
     position: absolute;
-    top: -64px;
-    right: -48px;
+    top: -43px;
+    right: -35px;
     width: 40px;
     height: 40px;
-    transform: rotate(45deg);
     cursor: pointer;
+    background: transparent;
+    border: none !important;
+    background-image: url(../../../images/Close_Icon.svg);
+    background-position: center;
+}
+
+.popup__close-button:hover {
+    opacity: .6;
 }
 
 @media screen and (max-width: 320px) {
     .popup__close-button {
-        top: -55px;
-        right: -20px;
-        font-size: 55px;
+        top: -61px;
+        right: -17px;
+        width: 26px;
+        height: 26px;
     }
 }
