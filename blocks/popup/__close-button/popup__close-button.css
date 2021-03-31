@@ -9,7 +9,6 @@
     cursor: pointer;
     background: transparent;
     border: none !important;
-    background-image: url(../../../images/Close_Icon.svg);
     background-position: center;
 }
 
