@@ -1,5 +1,4 @@
 .popup__close-button {
-    background-image: url(../../../images/Close_Icon.svg);
     color: #fff;
     position: absolute;
     top: -43px;
@@ -9,6 +8,7 @@
     cursor: pointer;
     background: transparent;
     border: none !important;
+    background-image: url(../../../images/Close_Icon.svg);
     background-position: center;
 }
 
