@@ -1,5 +1,5 @@
 .elements__container {
-    background-color:#fff;
+    background-color: #fff;
     width: 282px;
     border-radius: 10px;
     max-width: 880px;
@@ -9,6 +9,7 @@
     flex-wrap: wrap;
     align-items: baseline;
     padding:0; 
+    position: relative;
 }
 
 
