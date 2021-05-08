@@ -25,50 +25,7 @@
         </div>
             <button class="profile__add-button" type="button" id="place-open-popup_button"></button>
         </section>
-        <section class="elements">
-            <div class="elements__container"></div>
-                 <!--<div class="elements__items">
-                    <button class="elements__delete-button" type="button"></button>
-                    <img class="elements__photo" src="./images/karachaevsk.png" alt="заброшеная крепость на фоне зеленых гор">
-                    <h2 class="elements__heading">Карачаевск</h2>
-                    <button class="elements__like-button" type="button"></button>
-                </div>
-            
-            <div class="elements__container">
-            </div>
-            <div class="elements__container">
-                <div class="elements__items">
-                    <button class="elements__delete-button" type="button"></button>
-                    <img class="elements__photo" src="./images/dombai.png" alt="заснеженные горные пики">
-                    <h2 class="elements__heading">Домбай</h2>
-                    <button class="elements__like-button" type="button"></button>
-                </div>
-            </div>
-            <div class="elements__container">
-                <div class="elements__container">
-                    <button class="elements__delete-button" type="button"></button>
-                    <img class="elements__photo" src="./images/elbrus.png" alt="гора на закате">
-                    <h2 class="elements__heading">Гора Эльбрус</h2>
-                    <button class="elements__like-button" type="button"></button>
-                </div>
-            </div>
-            <div class="elements__container">
-                <div class="elements__items">
-                    <button class="elements__delete-button" type="button"></button>
-                    <img class="elements__photo" src="./images/dombai.png" alt="заснеженные горные пики">
-                    <h2 class="elements__heading">Домбай</h2>
-                    <button class="elements__like-button" type="button"></button>
-                </div>
-            </div>
-            <div class="elements__container">
-                <div class="elements__items">
-                    <button class="elements__delete-button" type="button"></button>
-                    <img class="elements__photo" src="./images/karachaevsk.png" alt="заброшеная крепость на фоне зеленых гор">
-                    <h2 class="elements__heading">Карачаево-Черкессия</h2>
-                    <button class="elements__like-button" type="button"></button>
-                </div>
-            </div>-->
-        </section>
+        <section class="elements" id="cards-container"></section>
     </main>
     <footer class="footer">
         <p class="footer__copy-right">&copy; 2021 Mesto Russia</p>
@@ -94,12 +51,14 @@
               </form>
             </div>
           </div>
-          <template id="cards-template">
-            <div class="elements__items">
+          <template id="card-template">
+            <div class="elements__container">
+            <div class="elements">
                 <button class="elements__delete-button" type="button"></button>
                 <img class="elements__photo" src="./images/elbrus.png" alt="гора на закате">
                 <h2 class="elements__heading">Гора Эльбрус</h2>
                 <button class="elements__like-button" type="button"></button>
+            </div>    
             </div>
           </template>
  <script src="./scripts/index.js"></script>

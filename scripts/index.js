@@ -77,7 +77,7 @@ placeCloseButton.addEventListener('click',placeClosePopup);
 
 /// Создаем карточки
 //const cardsTemplate = document.getElementById('cards-template');
-const cardsContainer = document.querySelector('.elements__container');
+
 const initialCards = [
   {
 	name: 'Архыз',
@@ -105,7 +105,29 @@ const initialCards = [
   }
 ];
 // создадим переменную для контейнера
-const cardContainer = document.querySelector('.elements__container');
-// создадим переменную для темплейта
-const cardTemplate = document.querySelector('#cards-template');
-console.log(cardTemplate);
+const cardsContainer = document.getElementById('cards-container');
+
+function makeCard(name,link){
+  const cardTemplate = document.getElementById('card-template').content;
+  const card = cardTemplate.querySelector('.elements__container').cloneNode(true);
+  const cardName = document.querySelector('.elements__heading');
+  console.log(cardName);
+  const cardLink = document.querySelector('.elements__photo');
+  card.querySelector('.elements__heading').textContent = name;
+  card.querySelector('.elements__photo').src = link;
+  return card;
+
+}
+
+makeCard();
+initialCards.forEach(function(item){
+  cardsContainer.append(makeCard(item.name,item.link))
+});
+const cardTitleInput =document.querySelector('.popup__input_name_title-card');
+// добавление новой карточки 
+function addCard (evt) {
+  evt.preventDefault();
+  card.prepend(makeCard(cardTitleInput.value))
+  closePopup
+}
+
