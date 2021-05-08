@@ -105,16 +105,16 @@ const initialCards = [
   }
 ];
 // создадим переменную для контейнера
-const cardsContainer = document.getElementById('cards-container');
+const cardsContainer = document.querySelector('.cards__container');
 
 function makeCard(name,link){
   const cardTemplate = document.getElementById('card-template').content;
-  const card = cardTemplate.querySelector('.elements__container').cloneNode(true);
-  const cardName = document.querySelector('.elements__heading');
-  console.log(cardName);
-  const cardLink = document.querySelector('.elements__photo');
-  card.querySelector('.elements__heading').textContent = name;
-  card.querySelector('.elements__photo').src = link;
+  const card = cardTemplate.querySelector('.cards__items').cloneNode(true);
+  const cardTitle = document.querySelector('.cards__title');
+  console.log(cardTitle);
+  const cardLink = document.querySelector('.cards__image');
+  card.querySelector('.cards__title').textContent = name;
+  card.querySelector('.cards__image').src = link;
   return card;
 
 }
@@ -123,11 +123,21 @@ makeCard();
 initialCards.forEach(function(item){
   cardsContainer.append(makeCard(item.name,item.link))
 });
-const cardTitleInput =document.querySelector('.popup__input_name_title-card');
-// добавление новой карточки 
-function addCard (evt) {
+
+
+/// ДОБАВЛЕНИЕ НОВОЙ КАРТОЧКИ
+// создаем переменные - контейнеры
+const cardTitleInput = document.getElementById('card-title_input');
+const cardImageLinkInput = document.getElementById('card-link-input"');
+const cardSaveButton = document.getElementById('card_submit');
+// ПИШЕМ ФУНКЦИЮ ПРИЯТИЯ ЗНАЧЕНИЙ ИНПУТОВ 
+function addNewCard(evt){
   evt.preventDefault();
-  card.prepend(makeCard(cardTitleInput.value))
-  closePopup
+  const cardTitle = document.querySelector('.cards__title');
+  cardTitle.textContent = cardTitleInput.value;
+  const cardLink = document.querySelector('.cards__image');
+  cardLink.src = cardImageLinkInput.value;
+  cardsContainer.prepend(addNewCard)
 }
+cardSaveButton.addEventListener('submit', addNewCard);
 
