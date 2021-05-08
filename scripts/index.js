@@ -110,8 +110,6 @@ const cardsContainer = document.querySelector('.cards__container');
 function makeCard(name,link){
   const cardTemplate = document.getElementById('card-template').content;
   const card = cardTemplate.querySelector('.cards__items').cloneNode(true);
-  const cardTitle = document.querySelector('.cards__title');
-  console.log(cardTitle);
   const cardLink = document.querySelector('.cards__image');
   card.querySelector('.cards__title').textContent = name;
   card.querySelector('.cards__image').src = link;
@@ -127,17 +125,17 @@ initialCards.forEach(function(item){
 
 /// ДОБАВЛЕНИЕ НОВОЙ КАРТОЧКИ
 // создаем переменные - контейнеры
-const cardTitleInput = document.getElementById('card-title_input');
-const cardImageLinkInput = document.getElementById('card-link-input"');
+
 const cardSaveButton = document.getElementById('card_submit');
+const cards = document.querySelector('.cards');
 // ПИШЕМ ФУНКЦИЮ ПРИЯТИЯ ЗНАЧЕНИЙ ИНПУТОВ 
 function addNewCard(evt){
   evt.preventDefault();
-  const cardTitle = document.querySelector('.cards__title');
-  cardTitle.textContent = cardTitleInput.value;
-  const cardLink = document.querySelector('.cards__image');
-  cardLink.src = cardImageLinkInput.value;
-  cardsContainer.prepend(addNewCard)
+  const cardTitleInput = document.getElementById('card-title_input');
+  const cardImageLinkInput = document.getElementById('card-link-input');
+  cardsContainer.prepend(makeCard(cardTitleInput.value, cardImageLinkInput.value));
+  placeClosePopup();
+
 }
 cardSaveButton.addEventListener('submit', addNewCard);
 
