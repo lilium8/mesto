@@ -1,0 +1,10 @@
+.cards__like-button_active {
+    background-image: url(../../../images/Unionactive.svg);
+    opacity: 100%;
+    background-color: #fff;
+    border: none;
+    width: 22px;
+    height: 19px;
+    margin-left: 30px;
+    cursor: pointer;
+}

@@ -117,7 +117,11 @@ function makeCard(name,link){
   cardDeleteButton.addEventListener('click', function(e) {
     e.target.closest('.cards__items').remove()
   })
-
+/// лайк карточки 
+ const likeButton = card.querySelector('.cards__like-button');
+ likeButton.addEventListener('click', function(e){
+  e.target.classlist.toggle('.cards__like-button_active');
+ }) 
   return card;
 
 }
@@ -144,4 +148,3 @@ function addNewCard(evt){
 
 }
 cardsForm.addEventListener('submit', addNewCard);
-

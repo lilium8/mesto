@@ -11,8 +11,3 @@
 .cards__like-button:hover {
     opacity: .5;
 }
-
-.cards__like-button:active {
-    background-image: url(../../../images/Unionactive.svg);
-    opacity: 100%;
-}
