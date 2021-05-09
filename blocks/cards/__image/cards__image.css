@@ -1,0 +1,10 @@
+.cards__image {
+    width: 282px;
+    height: 282px;
+    border-radius: 10px 10px 0 0;
+    
+}
+@keyframes zoom {
+    from {-webkit-transform: scale(0)} 
+    to {-webkit-transform: scale(1)}
+   }

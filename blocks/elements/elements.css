@@ -1,8 +1,0 @@
-.elements {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, 282px);
-    gap: 20px 17px;
-    box-sizing: border-box;
-    align-items: center;
-    justify-content: center;
-}

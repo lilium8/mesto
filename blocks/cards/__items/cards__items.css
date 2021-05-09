@@ -1,0 +1,13 @@
+.cards__items {
+    background-color: #fff;
+    width: 282px;
+    border-radius: 10px;
+    max-width: 880px;
+    box-sizing: border-box;
+    list-style: none;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: baseline;
+    padding:0; 
+    position: relative;
+}

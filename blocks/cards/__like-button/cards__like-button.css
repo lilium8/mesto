@@ -1,0 +1,13 @@
+.cards__like-button {
+    background-image: url(../../../images/Vectorlike\ \(1\).svg);
+    background-color: #fff;
+    border: none;
+    width: 22px;
+    height: 19px;
+    margin-left: 30px;
+    cursor: pointer;
+}
+
+.cards__like-button:hover {
+    opacity: .5;
+}
