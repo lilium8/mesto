@@ -111,8 +111,13 @@ function makeCard(name,link){
   const cardTemplate = document.getElementById('card-template').content;
   const card = cardTemplate.querySelector('.cards__items').cloneNode(true);
   const cardLink = document.querySelector('.cards__image');
+  const cardDeleteButton = card.querySelector('.cards__delete-button');
   card.querySelector('.cards__title').textContent = name;
   card.querySelector('.cards__image').src = link;
+  cardDeleteButton.addEventListener('click', function(e) {
+    e.target.closest('.cards__items').remove()
+  })
+
   return card;
 
 }
@@ -128,6 +133,7 @@ initialCards.forEach(function(item){
 
 const cardSaveButton = document.getElementById('card_submit');
 const cards = document.querySelector('.cards');
+const cardsForm = document.getElementById('popup-cards__form');
 // ПИШЕМ ФУНКЦИЮ ПРИЯТИЯ ЗНАЧЕНИЙ ИНПУТОВ 
 function addNewCard(evt){
   evt.preventDefault();
@@ -137,5 +143,5 @@ function addNewCard(evt){
   placeClosePopup();
 
 }
-cardSaveButton.addEventListener('submit', addNewCard);
+cardsForm.addEventListener('submit', addNewCard);
 
