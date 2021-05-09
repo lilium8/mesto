@@ -117,6 +117,10 @@ function makeCard(name,link){
   cardDeleteButton.addEventListener('click', function(e) {
     e.target.closest('.cards__items').remove()
   })
+  card.addEventListener('click', function(e){
+    imageCaptionZoom.textContent = e.target.closest('.cards').querySelector('.cards__title');
+    console.log(e.target.closest('.cards').querySelector('.cards__title'));
+  });
 /// лайк карточки 
  const likeButton = card.querySelector('.cards__like-button');
  likeButton.addEventListener('click', function(e){
@@ -154,5 +158,12 @@ cardsForm.addEventListener('submit', addNewCard);
 
 const popupImageZoom = document.getElementById('image-zoom');//контейнер для нового попапа 
 const zoomedPicture = document.querySelector('.popup__image');
-console.log(zoomedPicture);
+const imageCaptionZoom = document.querySelector('.popup__image-caption');
+const imageZoomCloseButton = document.querySelector('.popup__image-close-button');
+
+function zoomImage(e) {
+	imageCaptionZoom.textContent = e.target.closest('.cards').querySelector('.card__title');
+  console.log(imageCaptionZoom)
+}
+zoomImage();
 
