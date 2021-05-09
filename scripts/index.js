@@ -120,7 +120,7 @@ function makeCard(name,link){
 /// лайк карточки 
  const likeButton = card.querySelector('.cards__like-button');
  likeButton.addEventListener('click', function(e){
-  e.target.classlist.toggle('.cards__like-button_active');
+  e.target.classList.toggle('cards__like-button_active');
  }) 
   return card;
 
@@ -148,3 +148,11 @@ function addNewCard(evt){
 
 }
 cardsForm.addEventListener('submit', addNewCard);
+
+//ЗУМ КАРТОЧКИ
+// функция открытия попапа по клику
+
+const popupImageZoom = document.getElementById('image-zoom');//контейнер для нового попапа 
+const zoomedPicture = document.querySelector('.popup__image');
+console.log(zoomedPicture);
+
