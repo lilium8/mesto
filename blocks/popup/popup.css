@@ -12,4 +12,6 @@
     align-items: center;
     opacity: 0;
     transition: opacity .5s, linear .5s;
+
+    
 }
