@@ -167,8 +167,6 @@ function addNewCard(evt){
 }
 cardsForm.addEventListener('submit', addNewCard);
 
-//ЗУМ КАРТОЧКИ
-// функция открытия попапа по клику
 
 
 
