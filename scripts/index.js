@@ -85,7 +85,8 @@ function addNewCard(evt){
   const cardImageLinkInput = document.querySelector('#card-link-input');
   cardsContainer.prepend(makeCard(cardTitleInput.value, cardImageLinkInput.value));
   cardsForm.reset();
-  placeClosePopup();
+  closePopup(placePopup);
+  
 };
 
 /// СЛУШАТЕЛИ КЛИКОВ

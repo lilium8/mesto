@@ -1,4 +1,4 @@
-# Проектная работа №4: Место
+# Проектная работа №5: Место
 
 ------
 
@@ -14,6 +14,6 @@ C использованием методологии **БЭМ nested**.
 Макет сайта был разработан дизайнерами в **Figma** [Ссылка на макет в Figma](https://www.figma.com/file/2cn9N9jSkmxD84oJik7xL7/JavaScript.-Sprint-4?node-id=0%3A1)
 
 
-_Ссылка на опубликованную работу:_https://lilium8.github.io/mesto/
+Ссылка на опубликованную работу:_https://lilium8.github.io/mesto/
 
 
