@@ -26,6 +26,3 @@ const initialCards = [
   ];
 
 
-initialCards.forEach(function(item){
-  cardsContainer.append(makeCard(item.name,item.link))
-});

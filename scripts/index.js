@@ -13,10 +13,7 @@ const cardTemplate = document.querySelector('#card-template').content;
 const profileName = document.querySelector('.profile__name');
 const profileJob = document.querySelector('.profile__description');
 const formElement = document.querySelector('#popup_form');
-const placeNameInput = document.querySelector('#popup__input_name_title-card');
-const placeLinkInput = document.querySelector('#popup__input_name_link-card');
 const cardSaveButton = document.querySelector('#card_submit');
-const cards = document.querySelector('.cards');
 const cardsForm = document.querySelector('#popup-cards__form');
 const cardsContainer = document.querySelector('.cards__container');
 
@@ -41,7 +38,7 @@ function formSubmitHandler(evt) {
   evt.preventDefault();
    profileName.textContent = nameInput.value;
    profileJob.textContent = jobInput.value;
-    closePopup();
+    closePopup(profilePopup);
 };
 
 
@@ -59,13 +56,12 @@ function makeCard(name,link){
   
   // ЗУМ ФОТО
   const imageCaptionZoom = document.querySelector('.popup__image-caption');
-  const imageZoomCloseButton = document.querySelector('.popup__image-close-button');
   const zoomedPicture = document.querySelector('.popup__image');
   card.querySelector('.cards__image').addEventListener('click', function(e){
     imageCaptionZoom.textContent = name;
     zoomedPicture.alt = name;
     zoomedPicture.src = link;
-    popupImageZoom.classList.add('popup_visible');
+    openPopup(popupImageZoom);
   });
   
   
@@ -88,36 +84,30 @@ function addNewCard(evt){
   closePopup(placePopup);
   
 };
-
+initialCards.forEach(function(item){
+  cardsContainer.append(makeCard(item.name,item.link))
+});
 /// СЛУШАТЕЛИ КЛИКОВ
 
 // Слушатель открытия попапа профиля
 profilePopupButton.addEventListener('click', function(){
-  openPopup(profilePopup);
   nameInput.value = profileName.textContent;
   jobInput.value = profileJob.textContent;
+  openPopup(profilePopup);
 });
 
 // Cлушатель закрытия попапа профиля
-closePopupButton.addEventListener('click', function(){
-  closePopup(profilePopup)
-});
+closePopupButton.addEventListener('click', () => closePopup(profilePopup));
 
 // Cлушатель открытия попапа добавления карточки на странницу
-placeOpenPopupButton.addEventListener('click', function(){
-  openPopup(placePopup)
-});
+placeOpenPopupButton.addEventListener('click', () => openPopup(placePopup));
 
 // Слушатель закрытия попапа добавления карточки на страницу 
-placeCloseButton.addEventListener('click', function(){
-  closePopup(placePopup)
-});
+placeCloseButton.addEventListener('click', () => closePopup(placePopup));
 
 // Слушатель закрытия попапа зума фото
 
-imageZoomCloseButton.addEventListener('click', function(){
-  closePopup(popupImageZoom)
-});
+imageZoomCloseButton.addEventListener('click', ()=> closePopup(popupImageZoom));
 
 // Слушатели отправки форм
 formElement.addEventListener('submit', formSubmitHandler);
