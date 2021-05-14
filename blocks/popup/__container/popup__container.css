@@ -4,4 +4,35 @@
     height: 100vh;
     position: relative;
     padding-top: 180px;
+    margin-top: calc(100vh - 50%);
+}
+
+@media screen and (max-width: 872px) {
+    .popup__container {
+        max-width: 645px;
+    }
+}
+
+@media screen and (max-width: 723px) {
+    .popup__container {
+        max-width: 590px;
+    }
+}
+
+@media screen and (max-width: 669px) {
+    .popup__container {
+        max-width: 450px;
+    }
+}
+
+@media screen and (max-width: 457px) {
+    .popup__container {
+        max-width: 322px;
+    }
+}
+
+@media screen and (max-width: 320px) {
+    .popup__container {
+        max-width: 240px;
+    }
 }
