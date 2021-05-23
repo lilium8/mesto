@@ -33,7 +33,7 @@
 
 @media screen and (max-width: 320px) {
     .popup__container {
-        max-width: 240px;
+        max-width: 322px;
         margin-top: calc(100vh - 100%);
     }
 }

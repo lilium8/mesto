@@ -118,5 +118,5 @@ formElement.addEventListener('submit', formSubmitHandler);
 cardsForm.addEventListener('submit', addNewCard);
 
 
-
+enableValidation();
 
