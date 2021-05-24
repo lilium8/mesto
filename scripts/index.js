@@ -1,4 +1,5 @@
 /// ОБЪЯВЛЯЕМ ПЕРЕМЕННЫЕ
+const popupAll = document.querySelectorAll('.popup');
 const profilePopup = document.querySelector('#profile-popup'); 
 const placePopup = document.querySelector('#place-popup'); 
 const popupImageZoom = document.querySelector('#image-zoom'); 
@@ -23,16 +24,19 @@ const zoomedPicture = document.querySelector('.popup__image');
 
 
 
+
 /// ФУНКЦИИ 
 
 //Открытие попапа
 function openPopup(popup){
   popup.classList.add('popup_visible');
+  document.addEventListener('keydown',closePopupbyEscape)
 };
 
 // Закрытие попапа
 function closePopup(popup){
   popup.classList.remove('popup_visible')
+  document.removeEventListener('keydown',closePopupbyEscape)
 };
 
 
@@ -117,6 +121,26 @@ imageZoomCloseButton.addEventListener('click', ()=> closePopup(popupImageZoom));
 formElement.addEventListener('submit', formSubmitHandler);
 cardsForm.addEventListener('submit', addNewCard);
 
+const config  = {
+  formSelector:    '.popup__form',
+  inputSelector:   '.popup__input',
+  inputErrorClass: '.popup__input-error',
+  errorActiveClass: '.popup__input-error_active',
+  submitButtonSelector:  '.popup__save-button'
 
-enableValidation();
+};
 
+enableValidation(config);
+
+function closePopupbyEscape(evt) {
+  if (evt.key === 'Escape') {
+    const showPopup = document.querySelector('.popup_visible');
+    closePopup(showPopup);
+  };
+};
+
+popupAll.forEach(popupElement => popupElement.addEventListener('mousedown', function (evt) {
+  if (evt.target === evt.currentTarget) {
+    closePopup(popupElement);
+  }
+}));
