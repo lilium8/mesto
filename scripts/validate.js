@@ -34,7 +34,6 @@ const hasInvalidInput = (inputList) => {
   };
 
 const toggleButtonState = (buttonElement, inputList) => {
-    // if form valid enable button else disable
     if (hasInvalidInput(inputList)) {
         buttonElement.disabled = true;
     } else {
@@ -55,7 +54,6 @@ const setEventListeners = (formElement, config) => {
             checkInputValidity(formElement, inputElement, restConfig);
             toggleButtonState(buttonElement, inputList);
         });
-        // set initial button state
         toggleButtonState(buttonElement, inputList);
     });
 };

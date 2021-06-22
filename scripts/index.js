@@ -79,12 +79,21 @@ function zoomImage(name, link) {
     openPopup(popupImageZoom);
 }
 
+
+// const btn = document.querySelector('card_submit"');
+// console.log(btn);
 // Функция передачи данных инпутов
 function addNewCard(evt) {
     evt.preventDefault();
     cardsContainer.prepend(makeCard(cardTitleInput.value, cardImageLinkInput.value));
     cardsForm.reset();
     closePopup(placePopup);
+    const btn = document.querySelector('#card_submit"');
+    console.log(btn);
+    btn.disabled = true;
+
+
+    // toggleButtonState(button, inputList);
 }
 
 initialCards.forEach((item) => cardsContainer.append(makeCard(item.name, item.link)));
