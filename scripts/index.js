@@ -80,15 +80,13 @@ function zoomImage(name, link) {
 }
 
 
-// const btn = document.querySelector('card_submit"');
-// console.log(btn);
 // Функция передачи данных инпутов
 function addNewCard(evt) {
     evt.preventDefault();
     cardsContainer.prepend(makeCard(cardTitleInput.value, cardImageLinkInput.value));
     cardsForm.reset();
     closePopup(placePopup);
-    const btn = document.querySelector('#card_submit"');
+    const btn = document.querySelector('#card_submit');
     console.log(btn);
     btn.disabled = true;
 
