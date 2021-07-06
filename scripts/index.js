@@ -1,3 +1,43 @@
+/// Импортируем данные 
+import Card from './Card.js';
+
+const initialCards = [
+    {
+      name: 'Архыз',
+      link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/arkhyz.jpg'
+    },
+    {
+      name: 'Челябинская область',
+      link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/chelyabinsk-oblast.jpg'
+    },
+    {
+      name: 'Иваново',
+      link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/ivanovo.jpg'
+    },
+    {
+      name: 'Камчатка',
+      link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/kamchatka.jpg'
+    },
+    {
+      name: 'Холмогорский район',
+      link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/kholmogorsky-rayon.jpg'
+    },
+    {
+      name: 'Байкал',
+      link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/baikal.jpg'
+    }
+  ];
+
+/*initialCards.forEach((item)=>{
+    // Создадим экземпляр карточки
+    const card = new Card(item, '.card-template')
+    // Создаём карточку и возвращаем наружу
+    const cardElement = card.generateCard();
+    // Добавляем в DOM
+    document.body.append(cardElement);
+})*/
+
+
 /// ОБЪЯВЛЯЕМ ПЕРЕМЕННЫЕ
 const popups = document.querySelectorAll(".popup");
 const profilePopup = document.querySelector("#profile-popup");
@@ -61,15 +101,15 @@ function makeCard(name, link) {
     return card;
 }
 
-// Функция лайка
-function clickLikeButton(likeButton) {
+//Функция лайка
+/*function clickLikeButton(likeButton) {
     likeButton.classList.toggle("cards__like-button_active");
 }
 
 // Функция удаления карточки
 function deleteCard(card) {
     card.remove();
-}
+}*/
 
 // Функция зума фото
 function zoomImage(name, link) {
@@ -87,7 +127,6 @@ function addNewCard(evt) {
     cardsForm.reset();
     closePopup(placePopup);
     const btn = document.querySelector('#card_submit');
-    console.log(btn);
     btn.disabled = true;
 
 
@@ -135,3 +174,5 @@ popups.forEach((popupElement) =>
         }
     })
 );
+
+export {cardTemplate}

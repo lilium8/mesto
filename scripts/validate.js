@@ -1,3 +1,5 @@
+
+
 const hideInputError = (formElement, inputElement, config) => {
     const { inputErrorClass, errorActiveClass } = config;
     const errorElement = formElement.querySelector(`#${inputElement.id}-error`);
