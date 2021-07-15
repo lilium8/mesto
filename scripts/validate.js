@@ -75,4 +75,5 @@ const config = {
     submitButtonSelector: ".popup__save-button",
 };
 
+
 enableValidation(config);
