@@ -1,19 +1,18 @@
 .profile__description {
-    color: #fff;
-    font-weight: 400;
-    font-size: 18px;
-    line-height: 22px;
-    margin-top: 10px;
-    text-overflow: ellipsis;
-    overflow: hidden;
-    white-space: nowrap;
-    max-width: 336px;
-    
+  color: #fff;
+  font-weight: 400;
+  font-size: 18px;
+  line-height: 22px;
+  margin-top: 10px;
+  text-overflow: ellipsis;
+  overflow: hidden;
+  white-space: nowrap;
+  max-width: 336px;
 }
 
 @media screen and (max-width: 767px) {
-    .profile__description {
-        text-align: center;
-        font-size: 14px;
-    }
+  .profile__description {
+    text-align: center;
+    font-size: 14px;
+  }
 }

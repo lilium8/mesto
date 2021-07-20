@@ -1,29 +1,29 @@
-.popup__image-close-button{
-    color: #fff;
-    position: absolute;
+.popup__image-close-button {
+  color: #fff;
+  position: absolute;
+  top: 135px;
+  right: -40px;
+  width: 40px;
+  height: 40px;
+  cursor: pointer;
+  background: transparent;
+  border: none !important;
+  background-image: url(../../../images/Close_Icon.svg);
+  background-position: center;
+}
+
+@media screen and (max-width: 671px) {
+  .popup__image-close-button {
+    top: 120px;
+    right: -4px;
+  }
+}
+
+@media screen and (max-width: 320px) {
+  .popup__image-close-button {
+    width: 26px;
+    height: 26px;
     top: 135px;
-    right: -40px;
-    width: 40px;
-    height: 40px;
-    cursor: pointer;
-    background: transparent;
-    border: none !important;
-    background-image: url(../../../images/Close_Icon.svg);
-    background-position: center;
-}
-
-@media screen and (max-width: 671px){
-    .popup__image-close-button {
-        top: 120px;
-        right: -4px;
-    } 
-}
-
-@media screen and (max-width: 320px){
-    .popup__image-close-button {
-        width: 26px;
-        height: 26px;
-        top: 135px;
-        right: 1px;
-    } 
+    right: 1px;
+  }
 }

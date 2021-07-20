@@ -1,39 +1,39 @@
 .popup__container {
-    display: flex;
-    flex-direction: column;
-    height: 100vh;
-    position: relative;
-    padding-top: 180px;
-    margin-top: calc(100vh - 60%);
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+  position: relative;
+  padding-top: 180px;
+  margin-top: calc(100vh - 60%);
 }
 
 @media screen and (max-width: 872px) {
-    .popup__container {
-        max-width: 645px;
-    }
+  .popup__container {
+    max-width: 645px;
+  }
 }
 
 @media screen and (max-width: 723px) {
-    .popup__container {
-        max-width: 590px;
-    }
+  .popup__container {
+    max-width: 590px;
+  }
 }
 
 @media screen and (max-width: 669px) {
-    .popup__container {
-        max-width: 450px;
-    }
+  .popup__container {
+    max-width: 450px;
+  }
 }
 
 @media screen and (max-width: 457px) {
-    .popup__container {
-        max-width: 322px;
-    }
+  .popup__container {
+    max-width: 322px;
+  }
 }
 
 @media screen and (max-width: 320px) {
-    .popup__container {
-        max-width: 322px;
-        margin-top: calc(100vh - 100%);
-    }
+  .popup__container {
+    max-width: 322px;
+    margin-top: calc(100vh - 100%);
+  }
 }
