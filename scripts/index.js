@@ -112,7 +112,6 @@ function closePopupbyEscape(evt) {
     closePopup(showPopup);
   }
 }
-git
 popups.forEach((popupElement) =>
   popupElement.addEventListener('mousedown', function (evt) {
     if (evt.target === evt.currentTarget) {
