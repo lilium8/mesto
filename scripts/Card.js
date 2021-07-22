@@ -1,8 +1,5 @@
 import { openPopup } from './index.js';
 
-const popupImageZoom = document.querySelector('#image-zoom');
-const zoomedPicture = document.querySelector('.popup__image');
-const imageCaptionZoom = document.querySelector('.popup__image-caption');
 
 export default class Card {
   constructor(data, cardTemplate) {
@@ -13,6 +10,8 @@ export default class Card {
     this._cardDeleteBtn = this._card.querySelector('.card__delete-button');
   }
 
+  
+
   _likeCardHandler() {
     this._cardLikeBtn.classList.toggle('card__like-button_active');
   }
@@ -22,7 +21,11 @@ export default class Card {
   }
 
   _zoomImage() {
+    const popupImageZoom = document.querySelector('#image-zoom');
+    const zoomedPicture = document.querySelector('.popup__image');
+    const imageCaptionZoom = document.querySelector('.popup__image-caption');
     zoomedPicture.src = this._link;
+    zoomedPicture.alt = this._name;
     imageCaptionZoom.textContent = this._name;
     openPopup(popupImageZoom);
   }
@@ -38,8 +41,10 @@ export default class Card {
   }
 
   generateCard() {
+    const img = this._card.querySelector('.card__image')
     this._card.querySelector('.card__title').textContent = this._name;
-    this._card.querySelector('.card__image').src = this._link;
+    img.src = this._link;
+    img.alt = this._name;
     this._setEventListeners();
 
     return this._card;

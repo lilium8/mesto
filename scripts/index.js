@@ -9,9 +9,7 @@ const profilePopupButton = document.querySelector('#open_popup');
 const closePopupButton = document.querySelector('.popup__close-button');
 const placeOpenPopupButton = document.querySelector('#place-open-popup_button');
 const placeCloseButton = document.querySelector('#place_close-button');
-const imageZoomCloseButton = document.querySelector(
-  '.popup__image-close-button'
-);
+const imageZoomCloseButton = document.querySelector('.popup__image-close-button');
 const nameInput = document.querySelector('#name_input');
 const jobInput = document.querySelector('#job_input');
 const profileName = document.querySelector('.profile__name');
@@ -150,8 +148,6 @@ cardsForm.addEventListener('submit', handlePlaceFormSubmit);
 // Вызов функции валидации формы
 formValidationProfilePopup.enableValidation();
 formValidationPlacePopup.enableValidation();
-formValidationPlacePopup.enableValidation();
-formValidationPlacePopup.enableValidation();
 
 const popupFormsArr = Array.from(popupForms);
 
@@ -160,14 +156,9 @@ popupFormsArr.forEach((form) => {
 });
 
 function resetForm(form) {
-  const inputs = form.querySelectorAll('.popup__input');
-  const inputsArr = Array.from(inputs);
   const button = form.querySelector('.popup__save-button');
   button.disabled = true;
-  inputsArr.forEach((input) => {
-    input.value = '';
-  });
-  
+  popupForms.reset()
 }
 
 
