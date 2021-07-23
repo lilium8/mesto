@@ -19,8 +19,9 @@ const cardsForm = document.querySelector('#popup-cards__form');
 const profileForm = document.querySelector('#popup_form');
 const cardTitleInput = document.querySelector('#card-title_input');
 const cardImageLinkInput = document.querySelector('#card-link-input');
-const cardTemplate = document.querySelector('#card-template').content;
+// const cardTemplate = document.querySelector('#card-template').content;
 const popupForms = document.querySelectorAll('.popup__form');
+// const cardSelector = document.querySelector('#card-template');
 const initialCards = [
   {
     name: 'Архыз',
@@ -61,15 +62,17 @@ const formValidationPlacePopup = new FormValidator(config, cardsForm);
 /// ФУНКЦИЯ ДОБАВЛЕНИЯ КАРТОЧЕК ИЗ МАССИВА
 function renderCardElements() {
   initialCards.forEach((item) => {
-    addCard(item, cardTemplate);
+    addCard(item);
   });
 }
 renderCardElements();
 
 /// ФУНКЦИЯ ДОБАВЛЕНИЯ КАРТОЧКИ НА СТРАНИЦУ
-function addCard(item, cardTemplate) {
-  const card = new Card(item, cardTemplate).generateCard();
-  document.querySelector('.cards__container').prepend(card);
+function addCard(item) {
+  const card = new Card(item, '#card-template');
+  const cardElement = card.generateCard();
+  // const card = new Card(item, cardTemplate).generateCard();
+  document.querySelector('.cards__container').prepend(cardElement);
 }
 
 /// ФУНКЦИЯ ОТКРЫТИЯ ПОПАПА
@@ -99,7 +102,7 @@ function handlePlaceFormSubmit(evt) {
     name: cardTitleInput.value,
     link: cardImageLinkInput.value,
   };
-  addCard(newCard, cardTemplate);
+  addCard(newCard);
   closePopup(placePopup);
 }
 
@@ -152,13 +155,15 @@ formValidationPlacePopup.enableValidation();
 const popupFormsArr = Array.from(popupForms);
 
 popupFormsArr.forEach((form) => {
+  
   form.addEventListener('submit', () => resetForm(form));
+  console.log(popupFormsArr)
 });
 
 function resetForm(form) {
   const button = form.querySelector('.popup__save-button');
   button.disabled = true;
-  popupForms.reset()
+  form.reset()
 }
 
 

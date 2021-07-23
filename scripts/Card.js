@@ -1,19 +1,28 @@
 import { openPopup } from './index.js';
 
-
 export default class Card {
-  constructor(data, cardTemplate) {
+  constructor(data, cardSelector) {
     this._name = data.name;
     this._link = data.link;
-    this._card = cardTemplate.querySelector('.card').cloneNode(true);
-    this._cardLikeBtn = this._card.querySelector('.card__like-button');
-    this._cardDeleteBtn = this._card.querySelector('.card__delete-button');
+    this._cardSelector = cardSelector;
+    this._card = this._getTemplate();
+    // this._card = cardTemplate.querySelector('.card').cloneNode(true);
+    // this._cardLikeBtn = this._card.querySelector('.card__like-button');
+    // this._cardDeleteBtn = this._card.querySelector('.card__delete-button');
   }
 
-  
+  _getTemplate() {
+    const cardElement = document
+      .querySelector(this._cardSelector)
+      .content
+      .querySelector('.card')
+      .cloneNode(true);
+    return cardElement;
+  }
 
   _likeCardHandler() {
     this._cardLikeBtn.classList.toggle('card__like-button_active');
+    console.log(this._cardLikeBtn)
   }
 
   _deleteCardHandler() {
@@ -31,20 +40,23 @@ export default class Card {
   }
 
   _setEventListeners() {
+    this._cardLikeBtn = this._card.querySelector('.card__like-button');
+    this._cardDeleteBtn = this._card.querySelector('.card__delete-button');
     this._cardLikeBtn.addEventListener('click', () => this._likeCardHandler());
     this._cardDeleteBtn.addEventListener('click', () =>
       this._deleteCardHandler()
     );
     this._card.querySelector('.card__image').addEventListener('click', () => {
+      this._card.querySelector('.card__image')
       this._zoomImage();
     });
   }
 
   generateCard() {
-    const img = this._card.querySelector('.card__image')
+    this._img = this._card.querySelector('.card__image')
     this._card.querySelector('.card__title').textContent = this._name;
-    img.src = this._link;
-    img.alt = this._name;
+    this._img.src = this._link;
+    this._img.alt = this._name;
     this._setEventListeners();
 
     return this._card;
