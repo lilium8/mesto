@@ -1,5 +1,11 @@
-import Card from './Card.js';
-import FormValidator from './FormValidator.js';
+import Card from '../components/Card.js';
+import FormValidator from '../components/FormValidator.js';
+import Section from '../components/Section.js';
+import PopupWithIForm from '../components/popupWithForm.js';
+import UserInfo from '../components/UserInfo.js';
+import PopupWithImage from '../components/popupWithImage.js';
+import Popup from '../components/Popup.js';
+
 /// ОБЪЯВЛЯЕМ ПЕРЕМЕННЫЕ
 const popups = document.querySelectorAll('.popup');
 const profilePopup = document.querySelector('#profile-popup');
@@ -19,6 +25,7 @@ const cardsForm = document.querySelector('#popup-cards__form');
 const profileForm = document.querySelector('#popup_form');
 const cardTitleInput = document.querySelector('#card-title_input');
 const cardImageLinkInput = document.querySelector('#card-link-input');
+const cardsContainer = document.querySelector('.cards__container');
 // const cardTemplate = document.querySelector('#card-template').content;
 const popupForms = document.querySelectorAll('.popup__form');
 // const cardSelector = document.querySelector('#card-template');
@@ -58,41 +65,57 @@ const config = {
 
 const formValidationProfilePopup = new FormValidator(config, profileForm);
 const formValidationPlacePopup = new FormValidator(config, cardsForm);
+const popupWithImage = new PopupWithImage('.popup__image');
+popupWithImage.setEventListeners(); /// Uncaught TypeError: Cannot read property 'addEventListener' of null
+// at PopupWithImage.setEventListeners (Popup.js:27)
+// at index.js:69 - тоже не понимаю почему 
 
-/// ФУНКЦИЯ ДОБАВЛЕНИЯ КАРТОЧЕК ИЗ МАССИВА
-function renderCardElements() {
-  initialCards.forEach((item) => {
-    addCard(item);
-  });
-}
-renderCardElements();
+const popupProfile = new Popup('#profile-popup');
+const popupPlace = new Popup('#place-popup');
+popupProfile.setEventListeners();
+popupPlace.setEventListeners();
+const createCard = (name, link) => {
+  
+  const card = new Card({ 
+    name: name, 
+    link: link,
+    zoomedImage: () => {
+      popupWithImage.open(name, link)
+    }}, '#card-template');
 
-/// ФУНКЦИЯ ДОБАВЛЕНИЯ КАРТОЧКИ НА СТРАНИЦУ
-function addCard(item) {
-  const card = new Card(item, '#card-template');
-  const cardElement = card.generateCard();
-  // const card = new Card(item, cardTemplate).generateCard();
-  document.querySelector('.cards__container').prepend(cardElement);
+  return card.generateCard();
 }
+ 
+const cardList = new Section({
+  items: initialCards,
+  renderer: (item) => {
+   const cardElement = createCard(item.name, item.link)
+    cardList.addItem(cardElement);
+    },
+  },
+  cardsContainer
+);
+cardList.renderItems();
+
 
 /// ФУНКЦИЯ ОТКРЫТИЯ ПОПАПА
-function openPopup(popup) {
-  popup.classList.add('popup_visible');
-  document.addEventListener('keydown', closePopupbyEscape);
-}
+// function openPopup(popup) {
+//   popup.classList.add('popup_visible');
+//   document.addEventListener('keydown', closePopupbyEscape);
+// }
 
 /// ФУНКЦИЯ ЗАКРЫТИЯ ПОПАПА
-function closePopup(popup) {
-  popup.classList.remove('popup_visible');
-  document.removeEventListener('keydown', closePopupbyEscape);
-}
+// function closePopup(popup) {
+//   popup.classList.remove('popup_visible');
+//   document.removeEventListener('keydown', closePopupbyEscape);
+// }
 
 /// ФУНКЦИЯ ПОЛУЧЕНИЯ ДАННЫХ ПОПАПА ПРОФИЛЯ ИЗ ИНПУТОВ
 function handleProfileFormSubmit(evt) {
   evt.preventDefault();
   profileName.textContent = nameInput.value;
   profileJob.textContent = jobInput.value;
-  closePopup(profilePopup);
+  popupPlace.close();
 }
 
 /// ФУНКЦИЯ ПОЛУЧЕНИЯ ДАННЫХ ИЗ ИНПУТОВ ПОПАПА КАРТОЧКИ
@@ -102,24 +125,25 @@ function handlePlaceFormSubmit(evt) {
     name: cardTitleInput.value,
     link: cardImageLinkInput.value,
   };
-  addCard(newCard);
-  closePopup(placePopup);
+  // addItem(newCard);
+  cardList.addItem(newCard);
+  popupPlace.close();
 }
 
 /// ФУНКЦИЯ ЗАКРЫТИЯ ПОПАПА КНОПКОЙ ESC
-function closePopupbyEscape(evt) {
-  if (evt.key === 'Escape') {
-    const showPopup = document.querySelector('.popup_visible');
-    closePopup(showPopup);
-  }
-}
-popups.forEach((popupElement) =>
-  popupElement.addEventListener('mousedown', function (evt) {
-    if (evt.target === evt.currentTarget) {
-      closePopup(popupElement);
-    }
-  })
-);
+// function closePopupbyEscape(evt) {
+//   if (evt.key === 'Escape') {
+//     const showPopup = document.querySelector('.popup_visible');
+//     closePopup(showPopup);
+//   }
+// }
+// popups.forEach((popupElement) =>
+//   popupElement.addEventListener('mousedown', function (evt) {
+//     if (evt.target === evt.currentTarget) {
+//       closePopup(popupElement);
+//     }
+//   })
+// );
 
 ///// СЛУШАТЕЛИ КЛИКОВ
 
@@ -127,22 +151,22 @@ popups.forEach((popupElement) =>
 profilePopupButton.addEventListener('click', function () {
   nameInput.value = profileName.textContent;
   jobInput.value = profileJob.textContent;
-  openPopup(profilePopup);
+  popupProfile.open();
 });
 
 // Cлушатель закрытия попапа профиля
-closePopupButton.addEventListener('click', () => closePopup(profilePopup));
+// closePopupButton.addEventListener('click', () => popupProfile.close());
 
 // Cлушатель открытия попапа добавления карточки на странницу
-placeOpenPopupButton.addEventListener('click', () => openPopup(placePopup));
+placeOpenPopupButton.addEventListener('click', () => popupPlace.open());
 
 // Слушатель закрытия попапа добавления карточки на страницу
-placeCloseButton.addEventListener('click', () => closePopup(placePopup));
+// placeCloseButton.addEventListener('click', () => popupPlace.close());
 
 // Слушатель закрытия попапа зума фото
-imageZoomCloseButton.addEventListener('click', () =>
-  closePopup(popupImageZoom)
-);
+// imageZoomCloseButton.addEventListener('click', () =>
+//   closePopup(popupImageZoom)
+// );
 
 // Слушатели отправки форм
 formElement.addEventListener('submit', handleProfileFormSubmit);
@@ -157,7 +181,6 @@ const popupFormsArr = Array.from(popupForms);
 popupFormsArr.forEach((form) => {
   
   form.addEventListener('submit', () => resetForm(form));
-  console.log(popupFormsArr)
 });
 
 function resetForm(form) {
@@ -165,7 +188,3 @@ function resetForm(form) {
   button.disabled = true;
   form.reset()
 }
-
-
-
-export { openPopup };

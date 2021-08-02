@@ -1,11 +1,12 @@
-import { openPopup } from './index.js';
+// import { openPopup } from '../pages/index.js';
 
 export default class Card {
-  constructor(data, cardSelector) {
-    this._name = data.name;
-    this._link = data.link;
+  constructor({name, link, zoomedImage}, cardSelector) {
+    this._name = name;
+    this._link = link;
     this._cardSelector = cardSelector;
     this._card = this._getTemplate();
+    this._zoomedImage = zoomedImage;
     // this._card = cardTemplate.querySelector('.card').cloneNode(true);
     // this._cardLikeBtn = this._card.querySelector('.card__like-button');
     // this._cardDeleteBtn = this._card.querySelector('.card__delete-button');
@@ -22,22 +23,21 @@ export default class Card {
 
   _likeCardHandler() {
     this._cardLikeBtn.classList.toggle('card__like-button_active');
-    console.log(this._cardLikeBtn)
   }
 
   _deleteCardHandler() {
     this._card.remove();
   }
 
-  _zoomImage() {
-    const popupImageZoom = document.querySelector('#image-zoom');
-    const zoomedPicture = document.querySelector('.popup__image');
-    const imageCaptionZoom = document.querySelector('.popup__image-caption');
-    zoomedPicture.src = this._link;
-    zoomedPicture.alt = this._name;
-    imageCaptionZoom.textContent = this._name;
-    openPopup(popupImageZoom);
-  }
+  // _zoomImage() {
+  //   const popupImageZoom = document.querySelector('#image-zoom');
+  //   const zoomedPicture = document.querySelector('.popup__image');
+  //   const imageCaptionZoom = document.querySelector('.popup__image-caption');
+  //   zoomedPicture.src = this._link;
+  //   zoomedPicture.alt = this._name;
+  //   imageCaptionZoom.textContent = this._name;
+  //   openPopup(popupImageZoom);
+  // }
 
   _setEventListeners() {
     this._cardLikeBtn = this._card.querySelector('.card__like-button');
@@ -47,8 +47,7 @@ export default class Card {
       this._deleteCardHandler()
     );
     this._card.querySelector('.card__image').addEventListener('click', () => {
-      this._card.querySelector('.card__image')
-      this._zoomImage();
+      this._zoomedImage();
     });
   }
 
