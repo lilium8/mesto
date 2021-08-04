@@ -1,30 +1,31 @@
 import Card from '../components/Card.js';
 import FormValidator from '../components/FormValidator.js';
 import Section from '../components/Section.js';
-import PopupWithIForm from '../components/popupWithForm.js';
+import PopupWithForm from '../components/popupWithForm.js';
 import UserInfo from '../components/UserInfo.js';
 import PopupWithImage from '../components/popupWithImage.js';
 import Popup from '../components/Popup.js';
 
+
 /// ОБЪЯВЛЯЕМ ПЕРЕМЕННЫЕ
-const popups = document.querySelectorAll('.popup');
-const profilePopup = document.querySelector('#profile-popup');
-const placePopup = document.querySelector('#place-popup');
-const popupImageZoom = document.querySelector('#image-zoom');
+// const popups = document.querySelectorAll('.popup');
+// const profilePopup = document.querySelector('#profile-popup');
+// const placePopup = document.querySelector('#place-popup');
+// const popupImageZoom = document.querySelector('#image-zoom');
 const profilePopupButton = document.querySelector('#open_popup');
-const closePopupButton = document.querySelector('.popup__close-button');
+// const closePopupButton = document.querySelector('.popup__close-button');
 const placeOpenPopupButton = document.querySelector('#place-open-popup_button');
-const placeCloseButton = document.querySelector('#place_close-button');
-const imageZoomCloseButton = document.querySelector('.popup__image-close-button');
+// const placeCloseButton = document.querySelector('#place_close-button');
+// const imageZoomCloseButton = document.querySelector('.popup__image-close-button');
 const nameInput = document.querySelector('#name_input');
 const jobInput = document.querySelector('#job_input');
-const profileName = document.querySelector('.profile__name');
-const profileJob = document.querySelector('.profile__description');
+// const profileName = document.querySelector('.profile__name');
+// const profileJob = document.querySelector('.profile__description');
 const formElement = document.querySelector('#popup_form');
 const cardsForm = document.querySelector('#popup-cards__form');
 const profileForm = document.querySelector('#popup_form');
-const cardTitleInput = document.querySelector('#card-title_input');
-const cardImageLinkInput = document.querySelector('#card-link-input');
+// const cardTitleInput = document.querySelector('#card-title_input');
+// const cardImageLinkInput = document.querySelector('#card-link-input');
 const cardsContainer = document.querySelector('.cards__container');
 // const cardTemplate = document.querySelector('#card-template').content;
 const popupForms = document.querySelectorAll('.popup__form');
@@ -65,10 +66,8 @@ const config = {
 
 const formValidationProfilePopup = new FormValidator(config, profileForm);
 const formValidationPlacePopup = new FormValidator(config, cardsForm);
-const popupWithImage = new PopupWithImage('.popup__image');
-popupWithImage.setEventListeners(); /// Uncaught TypeError: Cannot read property 'addEventListener' of null
-// at PopupWithImage.setEventListeners (Popup.js:27)
-// at index.js:69 - тоже не понимаю почему 
+const popupWithImage = new PopupWithImage('#image-zoom');
+popupWithImage.setEventListeners();
 
 const popupProfile = new Popup('#profile-popup');
 const popupPlace = new Popup('#place-popup');
@@ -111,24 +110,62 @@ cardList.renderItems();
 // }
 
 /// ФУНКЦИЯ ПОЛУЧЕНИЯ ДАННЫХ ПОПАПА ПРОФИЛЯ ИЗ ИНПУТОВ
-function handleProfileFormSubmit(evt) {
-  evt.preventDefault();
-  profileName.textContent = nameInput.value;
-  profileJob.textContent = jobInput.value;
+
+const userInfo = new UserInfo('.profile__name', '.profile__description');
+const handleProfileFormSubmit = () => {
+  const userData = userInfo.getUserInfo();
+  nameInput.value = userData.name; 
+  jobInput.value = userData.profession; 
+  popupProfile.close();
+}
+
+const userFormPopup = new PopupWithForm('#profile-popup', {
+  formSubmit: (data) => {
+    userInfo.setUserInfo(data);
+  }
+});
+userFormPopup.setEventListeners();
+
+
+const placeFormPoup = new PopupWithForm ('#place-popup', {
+  formSubmit: (item) => {
+    const cardElement = createCard(item.name, item.link);
+    cardList.addItem(cardElement);
+  }
+})
+placeFormPoup.setEventListeners();
+
+const handlePlaceFormSubmit = () => {
   popupPlace.close();
 }
 
+// const popupCardForm = new PopupWithForm('.popup_type_add-card', {
+//   formSubmit: (data) => {
+//     const cardElement = createCard(data.name, data.link);
+//     cardList.addItem(cardElement);
+//   }
+// });
+
+// popupCardForm.setEventListeners();
+
+// const handlePopupAddCard = () => {
+//   resetAddForm(formAdd);
+//   popupCardForm.open();
+// };
+
+
+
 /// ФУНКЦИЯ ПОЛУЧЕНИЯ ДАННЫХ ИЗ ИНПУТОВ ПОПАПА КАРТОЧКИ
-function handlePlaceFormSubmit(evt) {
-  evt.preventDefault();
-  const newCard = {
-    name: cardTitleInput.value,
-    link: cardImageLinkInput.value,
-  };
-  // addItem(newCard);
-  cardList.addItem(newCard);
-  popupPlace.close();
-}
+// function handlePlaceFormSubmit(evt) {
+//   evt.preventDefault();
+//   const newCard = {
+//     name: cardTitleInput.value,
+//     link: cardImageLinkInput.value,
+//   };
+//   // addItem(newCard);
+//   cardList.addItem(newCard);
+//   popupPlace.close();
+// }
 
 /// ФУНКЦИЯ ЗАКРЫТИЯ ПОПАПА КНОПКОЙ ESC
 // function closePopupbyEscape(evt) {
@@ -148,15 +185,15 @@ function handlePlaceFormSubmit(evt) {
 ///// СЛУШАТЕЛИ КЛИКОВ
 
 /// Слушатель открытия попапа профиля
-profilePopupButton.addEventListener('click', function () {
-  nameInput.value = profileName.textContent;
-  jobInput.value = profileJob.textContent;
-  popupProfile.open();
-});
+// profilePopupButton.addEventListener('click', function () {
+//   nameInput.value = profileName.textContent;
+//   jobInput.value = profileJob.textContent;
+//   popupProfile.open();
+// });
 
 // Cлушатель закрытия попапа профиля
 // closePopupButton.addEventListener('click', () => popupProfile.close());
-
+profilePopupButton.addEventListener('click', () => popupProfile.open());
 // Cлушатель открытия попапа добавления карточки на странницу
 placeOpenPopupButton.addEventListener('click', () => popupPlace.open());
 

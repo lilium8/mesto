@@ -12,7 +12,7 @@ export default class Section {
     }
     //setItem — принимает параметр element и вставляет его в контейнер методом append
     addItem(element){
-        this.container.append(element);
+        this.container.prepend(element);
     }
 }
 

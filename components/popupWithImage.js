@@ -3,15 +3,13 @@ import Popup from "./Popup.js";
 export default class PopupWithImage extends Popup {
     constructor(popupSelector) {
         super(popupSelector);
-        this._zoomedPicture = document.querySelector('.popup__image');
-        this._imageCaptionZoom = document.querySelector('.popup__image-caption');
+        this._zoomedPicture = this.popup.querySelector('.popup__image');
+        this._imageCaptionZoom = this.popup.querySelector('.popup__image-caption');
     }
     open(name, link) {
-        this._zoomedPicture.scr = link;
-        this._imageCaptionZoom = name;
-        console.log(this._imageCaptionZoom)
+        super.open();
+        this._zoomedPicture.src = link;
         this._imageCaptionZoom.textContent = name;
-        /// сюда попадает Uncaught TypeError: Cannot create property 'textContent' on string 'Байкал' - не могу понять почему
     }
 }
 
