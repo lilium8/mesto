@@ -1,3 +1,4 @@
+import '../pages/index.css';
 import Card from '../components/Card.js';
 import FormValidator from '../components/FormValidator.js';
 import Section from '../components/Section.js';
@@ -56,6 +57,9 @@ const initialCards = [
     link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/baikal.jpg',
   },
 ];
+
+ 
+
 const config = {
   formSelector: '.popup__form',
   inputSelector: '.popup__input',
@@ -73,14 +77,18 @@ const popupProfile = new Popup('#profile-popup');
 const popupPlace = new Popup('#place-popup');
 popupProfile.setEventListeners();
 popupPlace.setEventListeners();
+
 const createCard = (name, link) => {
+
+  console.log(name)
+  console.log(link)
   
   const card = new Card({ 
     name: name, 
     link: link,
     zoomedImage: () => {
       popupWithImage.open(name, link)
-    }}, '#card-template');
+  }}, '#card-template');
 
   return card.generateCard();
 }
@@ -126,9 +134,12 @@ const userFormPopup = new PopupWithForm('#profile-popup', {
 });
 userFormPopup.setEventListeners();
 
-
 const placeFormPoup = new PopupWithForm ('#place-popup', {
   formSubmit: (item) => {
+    console.log(item)
+    console.log(item)
+    console.log(item.link)
+
     const cardElement = createCard(item.name, item.link);
     cardList.addItem(cardElement);
   }

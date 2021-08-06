@@ -10,7 +10,10 @@ export default class PopupWithForm extends Popup {
         this.inputs = Array.from(this.form.querySelectorAll('.popup__input'));
         const inputValues = {};
         this.inputs.forEach((input) => {
-            inputValues[input.name] = input.value});
+            console.log(inputValues[input.name])
+            console.log(input.value)
+            inputValues[input.name] = input.value
+        });
             return inputValues
     }// vмне кажется где-то в цикле ошибка один из инпутов не работет(в профиле не работает описание а в попапе месте ссылка почему то undifined)
 
