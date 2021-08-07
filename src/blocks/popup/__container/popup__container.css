@@ -3,7 +3,7 @@
   flex-direction: column;
   height: 100vh;
   position: relative;
-  margin-top: calc(100vh - 60%);
+  margin-top: calc(100vh - 30%);
 }
 
 @media screen and (max-width: 872px) {

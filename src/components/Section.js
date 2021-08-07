@@ -1,18 +1,18 @@
 export default class Section {
     constructor( {items, renderer}, containerSelector){
-    this.initialArray = items;
-    this.renderer = renderer;
-    this.container = containerSelector;
+    this._initialArray = items;
+    this._renderer = renderer;
+    this._container = containerSelector;
     }
     //renderItems — перебирает массив данных _initialArray. Вызывает для каждого элемента массива метод setItem.
     renderItems(){
-        this.initialArray.forEach(item => {
-            this.renderer(item)
+        this._initialArray.forEach(item => {
+            this._renderer(item)
         });
     }
     //setItem — принимает параметр element и вставляет его в контейнер методом append
     addItem(element){
-        this.container.prepend(element);
+        this._container.prepend(element);
     }
 }
 

@@ -3,30 +3,28 @@ import Popup from "./Popup.js";
 export default class PopupWithForm extends Popup {
     constructor(popuSelector, {formSubmit}) {
         super(popuSelector);
-        this.formSubmit = formSubmit;
-        this.form = this.popup.querySelector('.popup__form');
+        this._formSubmit = formSubmit;
+        this._form = this._popup.querySelector('.popup__form');
     }
     _getInputValues(){
-        this.inputs = Array.from(this.form.querySelectorAll('.popup__input'));
+        this.inputs = Array.from(this._form.querySelectorAll('.popup__input'));
         const inputValues = {};
         this.inputs.forEach((input) => {
-            console.log(inputValues[input.name])
-            console.log(input.value)
             inputValues[input.name] = input.value
         });
             return inputValues
-    }// vмне кажется где-то в цикле ошибка один из инпутов не работет(в профиле не работает описание а в попапе месте ссылка почему то undifined)
+    }
 
     close(){
         super.close();
-        this.form.reset();
+        this._form.reset();
     }
     
     setEventListeners() {
         super.setEventListeners(
-            this.form.addEventListener('submit', (evt) => {
+            this._form.addEventListener('submit', (evt) => {
                 evt.preventDefault();
-                this.formSubmit(this._getInputValues());
+                this._formSubmit(this._getInputValues());
                 this.close();
             })
         )
