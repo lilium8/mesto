@@ -1,7 +1,6 @@
-
 const profilePopupButton = document.querySelector('#open_popup');
 const placeOpenPopupButton = document.querySelector('#place-open-popup_button');
-const nameInput = document.querySelector('#job_input');
+const nameInput = document.querySelector('#name_input');
 const jobInput = document.querySelector('#job_input');
 const cardsForm = document.querySelector('#popup-cards__form');
 const profileForm = document.querySelector('#popup_form');
@@ -38,17 +37,17 @@ const config = {
   inputErrorClass: 'popup__input_type_error',
   errorActiveClass: 'popup__input-error_active',
   submitButtonSelector: '.popup__save-button',
-  inactiveSaveButtonClass: '.popup__save-button_inactive'
+  inactiveSaveButtonClass: 'popup__save-button_inactive',
 };
 
 export {
-    profilePopupButton, 
-    placeOpenPopupButton,
-    nameInput,
-    jobInput,
-    cardsForm,
-    profileForm,
-    cardsContainer,
-    initialCards,
-    config
-    }
+  profilePopupButton,
+  placeOpenPopupButton,
+  nameInput,
+  jobInput,
+  cardsForm,
+  profileForm,
+  cardsContainer,
+  initialCards,
+  config,
+};

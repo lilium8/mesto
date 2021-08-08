@@ -1,7 +1,7 @@
 .popup__save-button_inactive {
-    background-color: #fff;
-    cursor: not-allowed;
-    border: 1px solid;
-    border-color: #808080;
-    color: #808080;
-  }
+  background-color: #fff;
+  cursor: not-allowed;
+  border: 1px solid;
+  border-color: #808080;
+  color: #808080;
+}

@@ -1,7 +1,7 @@
 // import { openPopup } from '../pages/index.js';
 
 export default class Card {
-  constructor({name, link, zoomedImage}, cardSelector) {
+  constructor({ name, link, zoomedImage }, cardSelector) {
     this._name = name;
     this._link = link;
     this._cardSelector = cardSelector;
@@ -15,8 +15,7 @@ export default class Card {
   _getTemplate() {
     const cardElement = document
       .querySelector(this._cardSelector)
-      .content
-      .querySelector('.card')
+      .content.querySelector('.card')
       .cloneNode(true);
     return cardElement;
   }
@@ -52,7 +51,7 @@ export default class Card {
   }
 
   generateCard() {
-    this._img = this._card.querySelector('.card__image')
+    this._img = this._card.querySelector('.card__image');
     this._card.querySelector('.card__title').textContent = this._name;
     this._img.src = this._link;
     this._img.alt = this._name;
