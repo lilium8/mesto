@@ -65,17 +65,22 @@ const handleOpenProfilePopup = () => {
   nameInput.value = userData.name;
   jobInput.value = userData.job;
   popupUserForm.open();
+  formValidationProfilePopup.resetFormError();
 };
 
 const placeFormPopup = new PopupWithForm('#place-popup', {
   formSubmit: (item) => {
     const cardElement = createCard(item.name, item.link);
     cardList.addItem(cardElement);
-    formValidationPlacePopup.resetFormError();
+    // formValidationPlacePopup.resetFormError();
   },
 });
 placeFormPopup.setEventListeners();
+const handleOpenPlacePopup = () => {
+  placeFormPopup.open();
+  formValidationPlacePopup.resetFormError();
+}
 
 profilePopupButton.addEventListener('click', handleOpenProfilePopup);
-placeOpenPopupButton.addEventListener('click', () => placeFormPopup.open());
+placeOpenPopupButton.addEventListener('click', handleOpenPlacePopup);
 
